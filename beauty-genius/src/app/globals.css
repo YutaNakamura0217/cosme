@@ -1,24 +1,134 @@
-@import "tailwindcss";
+/* フォント設定 - @importは他のルールより前に配置する必要がある */
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+
+/* Tailwindのインポート */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* カラーパレット */
+  --color-primary: #FF6B81;
+  --color-primary-light: #FF9CAA;
+  --color-primary-dark: #D84A5A;
+  --color-secondary: #7D6AF3;
+  --color-secondary-light: #A396F5;
+  --color-secondary-dark: #5947C2;
+  --color-background: #FFF9F9;
+  --color-paper: #FFFFFF;
+  --color-text-primary: #212121;
+  --color-text-secondary: #757575;
+  --color-text-disabled: #9E9E9E;
+
+  /* アニメーション */
+  --transition-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --transition-accelerate: cubic-bezier(0.4, 0.0, 1, 1);
+  --transition-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --duration-shorter: 200ms;
+  --duration-short: 250ms;
+  --duration-standard: 300ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: 'Noto Sans JP', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  scroll-behavior: smooth;
+}
+
+/* アクセシビリティ向上のためのユーティリティクラス */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* ユーティリティクラス */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 32px;
+  }
+}
+
+/* アニメーション */
+.fade-in {
+  animation: fadeIn var(--duration-standard) var(--transition-standard);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp var(--duration-standard) var(--transition-standard);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* スクロールバースタイル */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
 }
