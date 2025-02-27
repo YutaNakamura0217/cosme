@@ -1,24 +1,34 @@
-/* フォント設定 - @importは他のルールより前に配置する必要がある */
-
-
 /* Tailwindのインポート */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* カラーパレット */
-  --color-primary: #FF6B81;
-  --color-primary-light: #FF9CAA;
-  --color-primary-dark: #D84A5A;
-  --color-secondary: #7D6AF3;
-  --color-secondary-light: #A396F5;
-  --color-secondary-dark: #5947C2;
-  --color-background: #FFF9F9;
+  /* 高級感のあるカラーパレット */
+  --color-primary: #D4B098; /* ソフトなシャンペンゴールド */
+  --color-primary-light: #E8D6C3;
+  --color-primary-dark: #B3937B;
+  --color-secondary: #8D7B68; /* ミュートされたトープ色 */
+  --color-secondary-light: #AFA193;
+  --color-secondary-dark: #6D5D4B;
+  --color-background: #F9F6F1; /* ソフトクリーム背景 */
   --color-paper: #FFFFFF;
-  --color-text-primary: #212121;
-  --color-text-secondary: #757575;
-  --color-text-disabled: #9E9E9E;
+  --color-text-primary: #3C3530;
+  --color-text-secondary: #6E655B;
+  --color-text-disabled: #B3A99C;
+  
+  /* アクセントカラー */
+  --color-success: #94A684;
+  --color-error: #C88EA7;
+  --color-warning: #E6B89C;
+  --color-info: #9AAFCB;
+
+  /* グレースケール */
+  --color-grey-50: #F9F8F6;
+  --color-grey-100: #F3F1ED;
+  --color-grey-200: #E9E6E0;
+  --color-grey-300: #DBD5CC;
+  --color-grey-400: #C7BFB4;
 
   /* アニメーション */
   --transition-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -27,20 +37,42 @@
   --duration-shorter: 200ms;
   --duration-short: 250ms;
   --duration-standard: 300ms;
+  --duration-long: 400ms;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 html,
 body {
-  font-family: 'Noto Sans JP', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  background-color: var(--color-background);
+  font-family: 'Noto Serif JP', 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+  background: linear-gradient(
+    to bottom,
+    var(--color-background) 0%,
+    var(--color-background) 85%,
+    var(--color-grey-100) 100%
+  );
   color: var(--color-text-primary);
   scroll-behavior: smooth;
+  min-height: 100vh;
+}
+
+/* エレガントなテクスチャーオーバーレイ */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23bdb5aa' fill-opacity='0.14' fill-rule='evenodd'/%3E%3C/svg%3E");
+  z-index: -1;
 }
 
 /* アクセシビリティ向上のためのユーティリティクラス */
@@ -84,9 +116,15 @@ body {
   }
 }
 
-/* アニメーション */
+/* 洗練されたアニメーション */
 .fade-in {
-  animation: fadeIn var(--duration-standard) var(--transition-standard);
+  animation: fadeIn 1.2s var(--transition-decelerate) forwards;
+}
+
+.fade-in-up {
+  animation: fadeInUp 1.2s var(--transition-decelerate) forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
 }
 
 @keyframes fadeIn {
@@ -96,10 +134,6 @@ body {
   to {
     opacity: 1;
   }
-}
-
-.fade-in-up {
-  animation: fadeInUp var(--duration-standard) var(--transition-standard);
 }
 
 @keyframes fadeInUp {
@@ -113,22 +147,79 @@ body {
   }
 }
 
-/* スクロールバースタイル */
+/* 高級感のあるスクロールバースタイル */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--color-grey-100);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: var(--color-primary);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  background: var(--color-primary-dark);
+}
+
+/* エレガントなテキスト選択 */
+::selection {
+  background: rgba(212, 176, 152, 0.3);
+  color: var(--color-text-primary);
+}
+
+/* 追加のユーティリティクラス */
+.text-elegant {
+  letter-spacing: 0.02em;
+  line-height: 1.8;
+}
+
+.border-accent {
+  position: relative;
+}
+
+.border-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 30%;
+  background-color: var(--color-primary-light);
+  transition: height 0.3s ease;
+}
+
+.border-accent:hover::before {
+  height: 100%;
+}
+
+.shadow-elegant {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.shadow-elegant:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
+}
+
+/* デコレーティブな要素 */
+.divider-accent {
+  position: relative;
+}
+
+.divider-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background-color: var(--color-primary);
 }
