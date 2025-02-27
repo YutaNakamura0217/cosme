@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Noto_Serif_JP, Playfair_Display } from 'next/font/google';
-import '@/app/globals.css';
+import '@/styles/globals.css';
 import ThemeRegistry from '@/components/ThemeRegistry';
 
 // Import Noto Serif JP for Japanese text
